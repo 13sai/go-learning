@@ -3,8 +3,10 @@ package main
 import "fmt"
 
 type LinkNode struct {
-	key, val  int
-	pre, next *LinkNode
+	key  int
+	val  int
+	prev *LinkNode // 头节点
+	next *LinkNode // 尾结点
 }
 
 type LRUCache struct {
@@ -14,16 +16,14 @@ type LRUCache struct {
 }
 
 func Constructor(capacity int) LRUCache {
-	head := &LinkNode{0, 0, nil, nil}
-	tail := &LinkNode{0, 0, nil, nil}
-	head.next = tail
-	tail.pre = head
+	// 头尾都为空，做标记
+	head, tail := &LinkNode{0, 0, nil, nil}, &LinkNode{0, 0, nil, nil}
+	head.next, tail.prev = tail, head
 	return LRUCache{make(map[int]*LinkNode), capacity, head, tail}
 }
 
 func (this *LRUCache) Get(key int) int {
-	cache := this.m
-	if v, exist := cache[key]; exist {
+	if v, exist := this.m[key]; exist {
 		this.MoveToHead(v)
 		return v.val
 	} else {
@@ -32,16 +32,13 @@ func (this *LRUCache) Get(key int) int {
 }
 
 func (this *LRUCache) RemoveNode(node *LinkNode) {
-	node.pre.next = node.next
-	node.next.pre = node.pre
+	node.prev.next, node.next.prev = node.next, node.prev
 }
 
 func (this *LRUCache) AddNode(node *LinkNode) {
 	head := this.head
-	node.next = head.next
-	head.next.pre = node
-	node.pre = head
-	head.next = node
+	node.next, head.next.prev = head.next, node
+	node.prev, head.next = head, node
 }
 
 func (this *LRUCache) MoveToHead(node *LinkNode) {
@@ -51,18 +48,17 @@ func (this *LRUCache) MoveToHead(node *LinkNode) {
 
 func (this *LRUCache) Put(key int, value int) {
 	tail := this.tail
-	cache := this.m
-	if v, exist := cache[key]; exist {
+	if v, exist := this.m[key]; exist {
 		v.val = value
 		this.MoveToHead(v)
 	} else {
 		v := &LinkNode{key, value, nil, nil}
-		if len(cache) == this.cap {
-			delete(cache, tail.pre.key)
-			this.RemoveNode(tail.pre)
+		if len(this.m) == this.cap {
+			delete(this.m, tail.prev.key)
+			this.RemoveNode(tail.prev)
 		}
 		this.AddNode(v)
-		cache[key] = v
+		this.m[key] = v
 	}
 }
 
@@ -79,10 +75,3 @@ func main() {
 	fmt.Println(cache.Get(4))
 	fmt.Println(cache.Get(3))
 }
-
-/**
- * Your LRUCache object will be instantiated and called as such:
- * obj := Constructor(capacity);
- * param_1 := obj.Get(key);
- * obj.Put(key,value);
- */
