@@ -2,6 +2,8 @@ package designPattern
 
 import "fmt"
 
+var aa = "a"
+
 // 简单工厂
 type Factory struct{}
 
