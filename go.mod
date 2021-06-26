@@ -3,12 +3,15 @@ module github.com/13sai/go-learing
 go 1.15
 
 require (
-	github.com/13sai/gohelper v0.0.0-20210225080349-0a675fff5232
-	github.com/kr/pretty v0.2.0 // indirect
-	github.com/muesli/cache2go v0.0.0-20210519043705-f6c4b2d7bc5d
-	github.com/spf13/cast v1.3.1
-	github.com/streadway/amqp v1.0.0
-	github.com/stretchr/testify v1.5.1
-	gopkg.in/check.v1 v1.0.0-20190902080502-41f04d3bba15 // indirect
-	gopkg.in/yaml.v2 v2.4.0 // indirect
+	github.com/golang/protobuf v1.4.2 // indirect
+	github.com/grpc-ecosystem/grpc-gateway v1.16.0 // indirect
+	github.com/micro/go-micro/v2 v2.9.1 // indirect
+	github.com/micro/go-plugins/registry/kubernetes/v2 v2.9.1 // indirect
+	google.golang.org/genproto v0.0.0-20200526211855-cb27e3aa2013 // indirect
+	google.golang.org/grpc v1.38.0 // indirect
+	google.golang.org/protobuf v1.25.0 // indirect
 )
+
+replace google.golang.org/grpc => google.golang.org/grpc v1.26.0
+
+replace github.com/lucas-clemente/quic-go => github.com/lucas-clemente/quic-go v0.14.1

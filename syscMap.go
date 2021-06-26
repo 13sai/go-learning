@@ -5,7 +5,7 @@ import (
 	"sync"
 )
 
-func main() {
+func Smap() {
 	var sm sync.Map
 
 	sm.Store("www", "2343125")
