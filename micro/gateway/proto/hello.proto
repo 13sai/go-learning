@@ -1,0 +1,29 @@
+syntax = "proto3";
+ 
+package proto;
+option go_package="/;proto";
+ 
+//引入google api实现http转rpc
+import "google/api/annotations.proto";
+// import "github.com/googleapis/googleapis/google/api/annotations.proto";
+ 
+service Demo {
+    rpc SayHello(HelloRequest) returns (HelloReply){
+        option (google.api.http) = {
+            post: "/v1/hi"
+            body: "*"
+        };
+ 
+    }
+}
+ 
+//定义客户端请求的数据格式
+//message 对应  生成的代码中的struct
+message HelloRequest{
+    // [修饰符] 类型 字段名 = 标识符
+    string name = 1;
+}
+ 
+message HelloReply{
+    string msg=1;
+}
