@@ -13,7 +13,7 @@ import (
 )
 
 var (
-	endpoint = flag.String("endpoint", "localhost:53682", "micro-hello-gateway address")
+	endpoint = flag.String("endpoint", "localhost:8081", "micro-hello-gateway address")
 )
 
 func run() error {
@@ -29,7 +29,7 @@ func run() error {
 		return err
 	}
 
-	return http.ListenAndServe(":8080", mux)
+	return http.ListenAndServe(":8088", mux)
 }
 
 func main() {
