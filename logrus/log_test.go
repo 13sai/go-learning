@@ -1,10 +1,12 @@
 package main
 
 import (
+	"testing"
+
 	"github.com/sirupsen/logrus"
 )
 
-func main() {
+func TestLog(t *testing.T) {
 	l, _ := logrus.ParseLevel("info")
 	logrus.SetLevel(l)
 	logrus.SetFormatter(&logrus.TextFormatter{

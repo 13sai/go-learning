@@ -1,14 +1,15 @@
-package main
+package channel
 
 import (
 	"context"
 	"fmt"
 	"os"
 	"os/signal"
+	"testing"
 	"time"
 )
 
-func main() {
+func TestSignal(t *testing.T) {
 	shut := make(chan os.Signal)
 	// stopChan := make(chan bool)
 	ctx, cancel := context.WithCancel(context.Background())

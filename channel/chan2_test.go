@@ -1,25 +1,25 @@
-package main
+package channel
 
 import (
 	"fmt"
+	"testing"
 	"time"
 )
 
-
-func main() {
+func TestChan2(t *testing.T) {
 	stop := make(chan struct{})
 
 	done := make(chan struct{}, 2)
 
-	for i :=0; i< 2; i++ {
+	for i := 0; i < 2; i++ {
 		go run(stop, done)
 	}
 
-	time.Sleep(2*time.Second)
+	time.Sleep(2 * time.Second)
 
 	close(stop)
 
-	for i:=0; i<2; i++ {
+	for i := 0; i < 2; i++ {
 		<-done
 	}
 }

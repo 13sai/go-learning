@@ -1,14 +1,15 @@
-package main
+package channel
 
 import (
 	"context"
 	"fmt"
 	"runtime"
 	"sync"
+	"testing"
 	"time"
 )
 
-func main() {
+func TestTimeout(t *testing.T) {
 	const total = 1000
 	var wg sync.WaitGroup
 	wg.Add(total)
@@ -22,7 +23,7 @@ func main() {
 	wg.Wait()
 	fmt.Println("elapsed:", time.Since(now))
 	fmt.Println("number of goroutines:", runtime.NumGoroutine())
-	time.Sleep(30 * time.Second)
+	time.Sleep(1 * time.Second)
 	fmt.Println("number of goroutines:", runtime.NumGoroutine())
 
 }
