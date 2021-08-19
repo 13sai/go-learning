@@ -11,6 +11,7 @@ var key string = "name"
 
 func TestChan(t *testing.T) {
 	ctx, cancel := context.WithCancel(context.Background())
+	defer cancel()
 	go watch(ctx, "【监控1】")
 	go watch(ctx, "【监控2】")
 	go watch(ctx, "【监控3】")
