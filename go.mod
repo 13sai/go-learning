@@ -4,6 +4,7 @@ go 1.15
 
 require (
 	github.com/13sai/gohelper v0.0.0-20210412100048-ca02c3b5351c
+	github.com/boltdb/bolt v1.3.1 // indirect
 	github.com/fsnotify/fsnotify v1.4.9 // indirect
 	github.com/gin-gonic/gin v1.7.2
 	github.com/go-playground/locales v0.13.0
