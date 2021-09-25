@@ -111,7 +111,9 @@ func init() {
 	proto.RegisterType((*HelloReply)(nil), "proto.HelloReply")
 }
 
-func init() { proto.RegisterFile("hello.proto", fileDescriptor_61ef911816e0a8ce) }
+func init() {
+	proto.RegisterFile("hello.proto", fileDescriptor_61ef911816e0a8ce)
+}
 
 var fileDescriptor_61ef911816e0a8ce = []byte{
 	// 181 bytes of a gzipped FileDescriptorProto
@@ -131,11 +133,11 @@ var fileDescriptor_61ef911816e0a8ce = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // DemoClient is the client API for Demo service.
 //
@@ -145,10 +147,10 @@ type DemoClient interface {
 }
 
 type demoClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewDemoClient(cc *grpc.ClientConn) DemoClient {
+func NewDemoClient(cc grpc.ClientConnInterface) DemoClient {
 	return &demoClient{cc}
 }
 
