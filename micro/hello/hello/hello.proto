@@ -1,7 +1,10 @@
 syntax = "proto3";  //语法声明
 
+import "common.proto";
+
 package hello; //包名
-option go_package="/;hello";
+option go_package="github.com/13sai/go-learing/micro/hello/hello";
+
 
 // 定义服务
 service Demo {
@@ -15,5 +18,6 @@ message HelloRequest {
 
 // 响应数据格式
 message HelloReply {
+  common.TypeHello hello = 2;
   string message = 1;
 }

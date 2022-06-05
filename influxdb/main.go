@@ -16,9 +16,9 @@ import (
 )
 
 // You can generate a Token from the "Tokens Tab" in the UI
-const token = "DrSIOHeQENB1T6o0jA2DpjYT_hs0aMjHszico96AIlLU-KTvJUkrUk0Dx1eOx7t-8wSTL2iMl63Gvh4q3ml9lw=="
-const bucket = "test"
-const org = "admin"
+const token = "xVC42FF4sJwILL8hYPdn8Absfkyvq8GfAyMlrpeIsloNRnEgFwHgy0SAh-Gg16sDj2UEvZwSAr24IVwdg6IA_g=="
+const bucket = "tt"
+const org = "sai"
 
 var client influxdb2.Client
 

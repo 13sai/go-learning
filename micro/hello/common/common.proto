@@ -1,0 +1,11 @@
+syntax = "proto3";  //语法声明
+
+package common;
+option go_package = "github.com/13sai/go-learing/micro/hello/common";
+
+enum TypeHello {
+    Unuse = 0;
+    Morning = 1;
+    Afernoon = 2;
+    Evening = 3;
+}
