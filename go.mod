@@ -4,6 +4,7 @@ go 1.15
 
 require (
 	github.com/13sai/gohelper v0.0.0-20210412100048-ca02c3b5351c
+	github.com/afex/hystrix-go v0.0.0-20180502004556-fa1af6a1f4f5
 	github.com/boltdb/bolt v1.3.1
 	github.com/gin-gonic/gin v1.7.2
 	github.com/go-playground/locales v0.13.0
